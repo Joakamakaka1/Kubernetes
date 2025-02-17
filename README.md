@@ -83,3 +83,56 @@ Kubernetes permite a los usuarios administrar clústeres de contenedores, brinda
 - **MySQL** para la persistencia de datos.
 - **Docker** para contenedores.
 - **Kubernetes** para orquestación, escalabilidad y gestión de la aplicación.
+
+## 6. Desplegar la API REST con Docker y Kubernetes
+
+Para desplegar la API REST con Docker:
+
+1. **Generar el archivo `.jar` de la API**  
+   Utilizar Gradle o Maven para compilar el proyecto y generar el archivo `.jar` necesario para ejecutar la aplicación.  
+   Ejecutar el siguiente comando para generar el archivo `.jar`:
+   - Para Gradle: `./gradlew bootJar`
+
+2. **Crear un archivo `Dockerfile`**  
+   Crear un `Dockerfile` en la raíz del proyecto para definir la imagen del contenedor y cómo ejecutar la API.
+
+3. **Crear un archivo `docker-compose.yml`**  
+   Configurar un archivo `docker-compose.yml` que defina los servicios de la API REST y la base de datos MySQL. Esto permitirá ejecutar ambos servicios en contenedores.
+
+4. **Crear un archivo `.env`**  
+   Define las variables de entorno necesarias para la base de datos MySQL y la configuración de la API REST, como el nombre de la base de datos, el usuario y la contraseña.
+
+5. **Modificar el archivo `application.properties`**  
+   Actualizar la URL de la base de datos en `application.properties` para que apunte al contenedor de MySQL en lugar de `localhost`.
+
+6. **Ejecutar los contenedores con Docker Compose**  
+   Una vez que todo esté configurado, se ha de ejecutar el siguiente comando para construir y levantar los contenedores:
+   ```bash
+   docker-compose up -d --build
+   ```
+
+Para desplegar la API REST con Kubernetes:
+
+1. **Crear un archivo de despliegue para la API**
+Se ha de definir un archivo de despliegue de Kubernetes que especifique cómo ejecutar la API REST, la cantidad de réplicas y la configuración de la conexión a la base de datos MySQL.
+
+3. **Crear un archivo de despliegue para la base de datos MySQL**
+Crear un archivo de despliegue para MySQL que defina la configuración del contenedor, las variables de entorno y el servicio para exponer la base de datos en el clúster de Kubernetes.
+
+4. **Aplicar los archivos de configuración de Kubernetes**
+Usar los siguientes comandos para desplegar los servicios de la API y la base de datos en el clúster de Kubernetes:
+
+```bash
+kubectl apply -f mysql-deployment.yml
+kubectl apply -f ciervus-api-deployment.yml
+```
+
+5. **Verificar el estado de los despliegues**
+Para asegurarte de que los pods están corriendo correctamente, ejecutamos:
+
+```bash
+kubectl get pods
+```
+
+
+
