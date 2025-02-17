@@ -45,14 +45,6 @@ Kubernetes permite a los usuarios administrar clústeres de contenedores, brinda
 
 ## 4. Endpoints
 
-## 5. Leyendas de Excepciones
-
-- **400 - Bad Request**: La solicitud es incorrecta o mal formada. Puede deberse a parámetros inválidos o falta de información necesaria.
-- **403 - Forbidden**: El usuario no tiene permisos suficientes para realizar la acción solicitada.
-- **404 - Not Found**: No se ha encontrado el recurso solicitado.
-- **409 - Conflict**: Ya existe un recurso con la información solicitada o un conflicto de datos.
-- **500 - Internal Server Error**: Error interno del servidor al procesar la solicitud. Puede deberse a fallos en la aplicación o en el servidor.
-
 ### Usuarios
 
 | Método  | Endpoint            | Descripción                                                        | Excepciones         |
