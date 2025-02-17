@@ -77,7 +77,7 @@ Kubernetes permite a los usuarios administrar clústeres de contenedores, brinda
 | `DELETE`| /reservas/{id}      | Cancelar una reserva existente. [Admin] & [Usuario(sólo las suyas)] | `400` - Bad Request<br>`403` - Forbidden<br>`404` - Not Found<br>`500` - Internal Server Error  |
 
 
-## 6. Tecnologías
+## 5. Tecnologías
 
 - **Java** con **Spring Boot** para el desarrollo del backend.
 - **MySQL** para la persistencia de datos.
