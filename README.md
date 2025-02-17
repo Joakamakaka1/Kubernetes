@@ -113,26 +113,22 @@ Para desplegar la API REST con Docker:
 
 Para desplegar la API REST con Kubernetes:
 
-1. **Crear un archivo de despliegue para la API**
-Se ha de definir un archivo de despliegue de Kubernetes que especifique cómo ejecutar la API REST, la cantidad de réplicas y la configuración de la conexión a la base de datos MySQL.
+1. **Crear un archivo de despliegue para la API**  
+   Se ha de definir un archivo de despliegue de Kubernetes que especifique cómo ejecutar la API REST, la cantidad de réplicas y la configuración de la conexión a la base de datos MySQL.
 
-3. **Crear un archivo de despliegue para la base de datos MySQL**
-Crear un archivo de despliegue para MySQL que defina la configuración del contenedor, las variables de entorno y el servicio para exponer la base de datos en el clúster de Kubernetes.
+2. **Crear un archivo de despliegue para la base de datos MySQL**  
+   Crear un archivo de despliegue para MySQL que defina la configuración del contenedor, las variables de entorno y el servicio para exponer la base de datos en el clúster de Kubernetes.
 
-4. **Aplicar los archivos de configuración de Kubernetes**
-Usar los siguientes comandos para desplegar los servicios de la API y la base de datos en el clúster de Kubernetes:
-
-```bash
-kubectl apply -f mysql-deployment.yml
-kubectl apply -f ciervus-api-deployment.yml
-```
-
-5. **Verificar el estado de los despliegues**
-Para asegurarte de que los pods están corriendo correctamente, ejecutamos:
-
-```bash
-kubectl get pods
-```
-
-
-
+3. **Aplicar los archivos de configuración de Kubernetes**  
+   Usar los siguientes comandos para desplegar los servicios de la API y la base de datos en el clúster de Kubernetes:
+   ```bash
+   kubectl apply -f mysql-deployment.yml
+   kubectl apply -f ciervus-api-deployment.yml
+   ```
+   
+4. **Verificar el estado de los despliegues**  
+   Para asegurarte de que los pods están corriendo correctamente, ejecutamos:
+   ```bash
+   kubectl get pods
+   ```
+   
