@@ -16,7 +16,7 @@ Para desplegar y administrar nuestra aplicación, utilizamos **Kubernetes**, una
 
 ## 3. Documentación
 
-### 3.1 ¿Qué es Kubernetes?
+### 3.1 ¿Qué es Kubernetes y para que sirve?
 
 Kubernetes es una plataforma de código abierto y extensible diseñada para la gestión de aplicaciones en contenedores. Facilita la automatización del despliegue, la escala y la operación de estas aplicaciones a través de un enfoque declarativo y basado en contenedores.
 
@@ -32,6 +32,30 @@ Kubernetes permite a los usuarios administrar clústeres de contenedores, brinda
 - **Service**: Es un componente que define cómo acceder a los pods de manera estable, incluso si los pods se crean o eliminan dinámicamente.
 - **Namespace**: Es una forma de organizar y aislar recursos dentro de un clúster.
 - **ConfigMap & Secret**: Almacenan configuraciones y datos sensibles de las aplicaciones (como contraseñas o claves), sin tener que codificarlos directamente en los contenedores.
+
+### 3.3 Arquitectura de Kubernetes
+
+#### 3.3.1 **Master Node (Nodo Maestro)**
+
+El **Master Node** es el cerebro del clúster de Kubernetes. Se encarga de gestionar el estado del clúster, coordinar los procesos y dirigir las solicitudes de los usuarios hacia los nodos adecuados. Los principales componentes del Master Node son:
+
+- **API Server (kube-apiserver)**: Expone la API REST de Kubernetes. Es el punto de entrada para interactuar con el clúster. Todos los comandos de `kubectl` y las solicitudes de los usuarios se envían a través de este servicio.
+  
+- **Controller Manager (kube-controller-manager)**: Se encarga de ejecutar los controladores que gestionan el estado de los recursos en el clúster. Los controladores aseguran que el estado actual coincida con el estado deseado, como por ejemplo, la creación de nuevos pods cuando se hace una solicitud de despliegue.
+
+- **Scheduler (kube-scheduler)**: Es responsable de asignar los pods a los nodos disponibles en función de los recursos y las políticas de afinidad y tolerancia.
+
+- **etcd**: Es la base de datos distribuida de Kubernetes que almacena todos los datos del clúster, incluyendo el estado de los recursos, las configuraciones y las políticas.
+
+#### 3.3.2 **Worker Node (Nodo de Trabajo)**
+
+Los **Worker Nodes** son las máquinas físicas o virtuales que ejecutan los contenedores de las aplicaciones. En cada nodo de trabajo, se ejecutan los siguientes componentes:
+
+- **Kubelet**: Es el agente principal que se ejecuta en cada nodo. Se asegura de que los contenedores estén en ejecución y funcionando de acuerdo con lo que el `kube-apiserver` le indique.
+
+- **Kube Proxy**: Actúa como un balanceador de carga y un enrutador de red para los servicios. Maneja las reglas de red, asegurando que el tráfico se redirija de manera adecuada entre los contenedores en el clúster.
+
+- **Container Runtime**: Es la herramienta responsable de ejecutar los contenedores en los nodos. Kubernetes soporta varios runtimes como Docker, containerd y CRI-O.
 
 ### 3.3 ¿Por qué Kubernetes para la API?
 
