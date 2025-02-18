@@ -1,0 +1,4 @@
+package com.es.api_ciervus.error.exception;
+
+public class ResourceNotFoundException {
+}

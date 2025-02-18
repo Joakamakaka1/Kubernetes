@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ciervus-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ciervus-api
+  template:
+    metadata:
+      labels:
+        app: ciervus-api
+    spec:
+      containers:
+        - name: ciervus-api
+          image: zentrig/ciervusapi-ciervus-api
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://mysql-ciervus:3306/alquiler-bd"
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: ciervus-api-secret
+                  key: SPRING_DATASOURCE_USERNAME
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ciervus-api-secret
+                  key: SPRING_DATASOURCE_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ciervus-api-service
+spec:
+  selector:
+    app: ciervus-api
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP

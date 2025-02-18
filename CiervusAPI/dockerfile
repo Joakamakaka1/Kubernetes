@@ -1,0 +1,10 @@
+#Usar la imagen de JDK
+FROM openjdk:17-jdk
+#Copiar el archivo .jar
+COPY build/libs/api_ciervus-0.0.1-SNAPSHOT.jar /usr/app/app.jar
+#Definir el directorio de trabajo
+WORKDIR /usr/app
+#Esto es para evitar problemas con permisos
+RUN sh -c 'touch /usr/app/app.jar'
+#Ejecutar el .jar
+ENTRYPOINT ["java","-jar","/usr/app/app.jar"]
