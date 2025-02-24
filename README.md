@@ -110,7 +110,7 @@ Los **Worker Nodes** son las máquinas físicas o virtuales que ejecutan los con
 
 ## 6. Desplegar la API REST con Docker y Kubernetes
 
-Requisitios minimos: Tener docker desktop y kubernetes instalado. Es recomendable descargarse minikube para realizar pruebas en loca
+Requisitios minimos: Tener docker desktop y kubernetes instalado. Es recomendable descargarse minikube para realizar pruebas en local
 
 Para desplegar la API REST con Docker:
 
