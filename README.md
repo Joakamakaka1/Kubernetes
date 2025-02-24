@@ -110,6 +110,8 @@ Los **Worker Nodes** son las máquinas físicas o virtuales que ejecutan los con
 
 ## 6. Desplegar la API REST con Docker y Kubernetes
 
+Requisitios minimos: Tener docker desktop y kubernetes instalado. Es recomendable descargarse minikube para realizar pruebas en loca
+
 Para desplegar la API REST con Docker:
 
 1. **Generar el archivo `.jar` de la API**  
@@ -132,6 +134,9 @@ Para desplegar la API REST con Docker:
 6. **Ejecutar los contenedores con Docker Compose**  
    Una vez que todo esté configurado, se ha de ejecutar el siguiente comando para construir y levantar los contenedores:
    ```bash
+   docker login
+   docker build -t tu_usuario_docker/ciervus-api
+   docker push tu_usuario_docker/ciervus-api
    docker-compose up -d --build
    ```
 
@@ -155,4 +160,11 @@ Para desplegar la API REST con Kubernetes:
    ```bash
    kubectl get pods
    ```
+
+5. **Realizar pruebas finales**  
+   Podemos probar el servicio API usando el siguiente comando de Kubernetes, que redirige el puerto del Pod al puerto de tu máquina local
+   ```bash
+   kubectl port-forward pod/nombre-del-pod-api 8080:8080
+   ```
+
    
